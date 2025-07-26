@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-07-25T18:38:46Z"
+  labels:
+    app: mydeploy
+  name: mydeploy
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mydeploy
+  type: ClusterIP
