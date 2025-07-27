@@ -1,19 +1,19 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: mydeploy
+  name: mystatefulset
   labels:
-    app: mydeploy
+    app: mystatefulset
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
-      app: mydeploy
+      app: mystatefulset
   template:
     metadata:
       labels:
-        app: mydeploy
+        app: mystatefulset
     spec:
       containers:
-      - name: mydeploy
+      - name: mystatefulset
         image: nginx
