@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mylogin
+  labels:
+    app: mylogin
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mylogin
+  template:
+    metadata:
+      labels:
+        app: mylogin
+    spec:
+      containers:
+      - name: mylogin
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: myvolume
+            mountPath: /usr/share/nginx/html/
+            readOnly: true
+      volumes:
+      - name: myvolume
+        configMap:
+          name: myindex
