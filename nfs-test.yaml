@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-test
+spec:
+  containers:
+    - name: nfs-client
+      image: ubuntu
+      command: ["sleep", "infinity"]
+      securityContext:
+        privileged: true
+        capabilities:
+          add: ["SYS_ADMIN"]
+      volumeMounts:
+        - mountPath: /mnt
+          name: host-mount
+  volumes:
+    - name: host-mount
+      emptyDir: {}
+  hostNetwork: true
